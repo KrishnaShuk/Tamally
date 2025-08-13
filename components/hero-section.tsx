@@ -13,7 +13,7 @@ export default function HeroSection() {
       <div className="relative min-h-screen bg-black"> {/* Base background */}
         
         {/* Background Layer */}
-        <div className="absolute opacity-60 inset-0 z-0">
+        <div className="absolute opacity-100 inset-0 z-0">
           <VantaNetBackground />
         </div>
 
@@ -67,7 +67,7 @@ export default function HeroSection() {
             bottom-0 
             left-0 
             w-full 
-            h-24 md:h-40 
+            h-15 md:h-20 
             bg-gradient-to-t 
             from-black
             to-transparent 

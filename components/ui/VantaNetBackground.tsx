@@ -50,7 +50,7 @@ const VantaNetBackground = () => {
             backgroundColor: 0x0,   // Background color (black)
             
             // 1. Decrease the number of points for a sparser net.
-            points: 10.00,           // Original: 10.00
+            points: 25.00,           // Original: 10.00
             
             // 2. Reduce the max distance to create fewer connection lines.
             maxDistance: 20.00,     // Original: 20.00
@@ -82,7 +82,7 @@ const VantaNetBackground = () => {
         width: '100%',
         height: '100%',
         zIndex: 0,
-        opacity: 0.7,
+        opacity: 0.8,
       }}
     />
   );

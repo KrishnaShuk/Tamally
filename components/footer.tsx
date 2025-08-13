@@ -8,7 +8,6 @@ const pageLinks = [
   { title: "About", href: "#" },
 ];
 
-// It's good practice to separate different types of data
 const socialLinks = [
   {
     name: "X/Twitter",
@@ -26,33 +25,36 @@ const socialLinks = [
       </svg>
     ),
   },
-  // You could add more social links here in the future
 ];
 
 export default function FooterSection() {
   return (
-    <footer className="relative bg-black"> {/* Added a base background color */}
-      {/* Background Layer: No changes needed here */}
-      <div className="absolute inset-0 z-0 opacity-100"> {/* Added opacity for better text readability */}
+    <footer className="relative bg-black">
+      <div className="absolute inset-0 z-0 opacity-60">
         <VantaNetBackground />
       </div>
 
       {/* 
-        --- FIX #1: Added 'relative' to make z-index work ---
-        This is the main content container. It must be positioned for z-index to apply.
+        RESPONSIVE CONTAINER:
+        - Less vertical padding on mobile (py-12)
+        - More vertical padding on medium screens and up (md:py-24)
+        - Horizontal padding adjusted for different breakpoints (px-4 sm:px-6)
       */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 md:py-32">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-24">
         <Link href="/" aria-label="go home" className="mx-auto block w-fit text-2xl text-white font-playwrite">
           Tamally
         </Link>
         
-        {/* 
-          --- FIX #2 & #3: Combined links into a semantic <nav> element ---
-          This improves structure and accessibility.
-        */}
-        <nav className="my-8 flex flex-col items-center gap-8 text-sm" aria-label="Footer Navigation">
+        <nav 
+          className="
+            my-10 flex flex-col items-center 
+            gap-y-8 sm:gap-y-10  /* Responsive vertical gap */
+            text-sm
+          " 
+          aria-label="Footer Navigation"
+        >
           {/* Page Links */}
-          <ul className="flex flex-wrap justify-center gap-6">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3"> {/* Added vertical gap for wrapping */}
             {pageLinks.map((link) => (
               <li key={link.title}>
                 <Link

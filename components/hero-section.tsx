@@ -10,23 +10,38 @@ export default function HeroSection() {
     <>
       <HeroHeader />
       {/* Main container for the hero section */}
-      <div className="relative min-h-screen bg-black"> {/* Set a base background */}
+      <div className="relative min-h-screen bg-black"> {/* Base background */}
         
         {/* Background Layer */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute opacity-60 inset-0 z-0">
           <VantaNetBackground />
         </div>
 
         {/* Content Layer */}
         <div className="relative z-20 min-h-screen flex flex-col items-center justify-center">
-          <div className="text-center px-4">
-            <h1 className="text-8xl font-extrabold text-white font-playwrite">
+          {/* Added responsive padding for better spacing on all devices */}
+          <div className="text-center px-4 sm:px-6 lg:px-8">
+            
+            {/* 
+              RESPONSIVE HEADING:
+              - Starts smaller on mobile (text-6xl)
+              - Gets larger on medium screens and up (md:text-8xl)
+            */}
+            <h1 className="text-6xl md:text-8xl font-extrabold text-white font-playwrite">
               Tamally
             </h1>
-            <p className="mt-20 max-w-2xl text-xl text-gray-300">
+            
+            {/* 
+              RESPONSIVE PARAGRAPH:
+              - Less top margin on mobile (mt-8)
+              - More top margin on medium screens and up (md:mt-20)
+              - Font size is also responsive
+            */}
+            <p className="mt-8 md:mt-20 max-w-2xl text-lg md:text-xl text-gray-300">
               Your assistant to make easy and converting Email Templates.
             </p>
-            <div className="mt-8 flex justify-center">
+            
+            <div className="mt-10 flex justify-center">
               <Button asChild size="lg"  variant="destructive">
                 <Link
                   href="https://chromewebstore.google.com/detail/ai-email-template-editor/anpamecmmdpglhlnkkoclhplfkkakjhf?authuser=1&hl=en-GB"
@@ -41,14 +56,18 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* --- ADDED: Diminishing/Fade-out Effect --- */}
+        {/* 
+          RESPONSIVE FADE-OUT:
+          - Shorter on mobile (h-24) to save space
+          - Taller on medium screens and up (md:h-40) for a smoother effect
+        */}
         <div 
           className="
             absolute 
             bottom-0 
             left-0 
             w-full 
-            h-40 
+            h-24 md:h-40 
             bg-gradient-to-t 
             from-black
             to-transparent 
@@ -56,7 +75,6 @@ export default function HeroSection() {
           "
         />
       </div>
-
     </>
   );
 }

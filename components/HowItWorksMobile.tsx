@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-// You can define a more specific type if needed
 interface Step {
   number: string;
   title: string;
@@ -11,27 +10,32 @@ interface Step {
 
 export default function HowItWorksMobile({ steps }: { steps: Step[] }) {
   return (
-    <div className="py-16 lg:hidden">
-      <div className="mx-auto max-w-2xl px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            How It Works
-          </h2>
-          <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-orange-500" />
-        </div>
-        <ul className="space-y-12">
-          {steps.map((step, index) => (
-            <li key={index} className="flex flex-col items-center text-center">
-              <div className="mb-6 overflow-hidden rounded-xl border border-gray-700">
-                <Image src={step.imageSrc} alt={step.title} width={600} height={400} />
-              </div>
-              <p className="text-4xl font-bold text-orange-500">{step.number}</p>
-              <h3 className="mt-2 text-2xl font-semibold text-white">{step.title}</h3>
-              <p className="mt-2 text-gray-400">{step.description}</p>
-            </li>
-          ))}
-        </ul>
+    // --- FIX #4: Improved mobile layout ---
+    <div className="py-16 sm:py-24 lg:hidden">
+      <div className="text-center mb-12 sm:mb-16">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          How It Works
+        </h2>
+        <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-brand-accent" />
       </div>
+      <ul className="space-y-16">
+        {steps.map((step, index) => (
+          <li key={index} className="flex flex-col items-center text-center">
+            {/* Aspect ratio container keeps image shape consistent */}
+            <div className="relative w-full max-w-md overflow-hidden rounded-xl border border-gray-700 aspect-[4/3] mb-8">
+              <Image
+                src={step.imageSrc}
+                alt={step.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="text-5xl font-bold text-brand-accent">{step.number}</p>
+            <h3 className="mt-2 text-2xl font-semibold text-white">{step.title}</h3>
+            <p className="mt-4 max-w-sm text-base text-gray-400">{step.description}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

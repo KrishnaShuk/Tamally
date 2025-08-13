@@ -3,31 +3,28 @@ import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import HowItWorksMobile from './HowItWorksMobile';
 
-// --- THE FIX ---
-// Dynamically import the desktop component and disable Server-Side Rendering (ssr)
 const HowItWorksDesktop = dynamic(() => import('./HowItWorksDesktop'), {
   ssr: false,
 });
 
 const steps = [
   {
-    number: '1', title: 'Prepare your Mailing List',
-    description: 'Create your Google Sheets with your mailing list.',
+    number: '1', title: 'Download the Extension',
+    description: 'Click on the above button under the title for the extension',
     imageSrc: '/images/how-to-step-1.png',
   },
   {
-    number: '2', title: 'Create Your Email Template',
-    description: 'Choose a template, write your content, and save it.',
+    number: '2', title: 'Open the modal in Gmail',
+    description: 'After Downloading, an icon will appear in the Messaging Modal.',
     imageSrc: '/images/how-to-step-2.png',
   },
   {
-    number: '3', title: 'Send Your Mail Merge',
-    description: 'Go back to your sheet and click send.',
+    number: '3', title: 'Create and edit your email Templates',
+    description: 'You can now edit and create the templates as per your wants with the help of AI',
     imageSrc: '/images/how-to-step-3.png',
   },
 ];
 
-// Custom hook to safely check media queries on the client
 const useMediaQuery = (query: string) => {
   const [matches, setMatches] = useState(false);
   useEffect(() => {
@@ -40,23 +37,20 @@ const useMediaQuery = (query: string) => {
   return matches;
 };
 
-
 export default function HowItWorks() {
-  // Guard against hydration errors by only rendering after mount
   const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  useEffect(() => { setIsMounted(true); }, []);
 
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
-  if (!isMounted) {
-    return null; // Or a loading skeleton component
-  }
+  if (!isMounted) return null;
 
   return (
     <section className="bg-black">
-      {isDesktop ? <HowItWorksDesktop steps={steps} /> : <HowItWorksMobile steps={steps} />}
+      {/* --- FIX #2: Added container for margins and centering --- */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {isDesktop ? <HowItWorksDesktop steps={steps} /> : <HowItWorksMobile steps={steps} />}
+      </div>
     </section>
   );
 }

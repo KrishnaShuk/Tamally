@@ -11,17 +11,17 @@ const steps = [
   {
     number: '1', title: 'Download the Extension',
     description: 'Click on the above button under the title for the extension',
-    imageSrc: '/images/how-to-step-1.png',
+    imageSrc: '/images/step-1.png',
   },
   {
     number: '2', title: 'Open the modal in Gmail',
     description: 'After Downloading, an icon will appear in the Messaging Modal.',
-    imageSrc: '/images/how-to-step-2.png',
+    imageSrc: '/images/step-2.png',
   },
   {
     number: '3', title: 'Create and edit your email Templates',
     description: 'You can now edit and create the templates as per your wants with the help of AI',
-    imageSrc: '/images/how-to-step-3.png',
+    imageSrc: '/images/step-3.png',
   },
 ];
 
